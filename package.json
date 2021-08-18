@@ -1,0 +1,31 @@
+{
+    "name": "with-tailwindcss",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@next-auth/prisma-adapter": "^0.5.4",
+        "@prisma/client": "^2.29.1",
+        "@types/react-select": "^4.0.15",
+        "next": "latest",
+        "next-auth": "^3.25.0",
+        "pg": "^8.7.1",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-select": "^4.3.1"
+    },
+    "devDependencies": {
+        "@tailwindcss/jit": "^0.1.18",
+        "@types/react": "^17.0.9",
+        "autoprefixer": "^10.0.4",
+        "postcss": "^8.1.10",
+        "prettier": "^2.3.1",
+        "prisma": "2.29.1",
+        "tailwindcss": "^2.1.1",
+        "typescript": "^4.3.2"
+    }
+}
