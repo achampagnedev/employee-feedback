@@ -4,6 +4,7 @@ import FormUI from '../ui/FormUI';
 import ButtonUI from '../ui/ButtonUI';
 import Select from 'react-select';
 import { useEmployees } from '../../context/EmployeesContext';
+import { USER_ROLE_OPTIONS } from '../../constants';
 
 const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
     const [name, setName] = useState('');
@@ -17,8 +18,9 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
             method: 'POST',
             body: JSON.stringify({ name, email, position, role }),
         })
-            .then(async (response) => {
+            .then(async (response: Response) => {
                 const result = await response.json().then((result) => result);
+                if (result.error) return alert(result.error);
                 setEmployees([...employees, result]);
                 setName('');
                 setEmail('');
@@ -28,11 +30,6 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
             .catch((e) => console.error(e));
     };
 
-    const userRoleOptions = [
-        { value: 'manager', label: 'Manager' },
-        { value: 'employee', label: 'Employee' },
-    ];
-
     return (
         <CardUI>
             <FormUI headerText="Add Employee" closableOnClick={creatable}>
@@ -40,7 +37,7 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
                     className="grid grid-cols-2 gap-8"
                     onSubmit={(e) => {
                         e.preventDefault();
-                        addEmployee();
+                        addEmployee().then((r) => r);
                     }}
                 >
                     <div>
@@ -54,7 +51,6 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
                             <input
                                 required
                                 id="employee_name"
-                                name="employee_name"
                                 type="text"
                                 value={name}
                                 placeholder="Employee name"
@@ -72,7 +68,6 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
                             <input
                                 required
                                 id="employee_email"
-                                name="employee_email"
                                 type="email"
                                 value={email}
                                 placeholder="Employee email"
@@ -92,7 +87,6 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
                             <input
                                 required
                                 id="employee_position"
-                                name="employee_position"
                                 type="text"
                                 value={position}
                                 placeholder="Employee position"
@@ -110,9 +104,11 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
                             <Select
                                 required
                                 id="employee_role"
-                                name="employee_role"
-                                placeholder="Employee Role"
-                                options={userRoleOptions}
+                                placeholder="Select Employee Role"
+                                menuPortalTarget={document.querySelector(
+                                    'body'
+                                )}
+                                options={USER_ROLE_OPTIONS}
                                 onChange={(e) => setRole(e)}
                                 className="text-sm flex-grow rounded-sm disabled:opacity-50 disabled:bg-off-white min-w-[200px] w-full"
                             />

@@ -2,10 +2,10 @@
 
 This app is an attempt to fulfill the requirements for the code challenge for the role of Front-End Engineer at PayPay.
 
-*This project is using the following technologies/frameworks/libraries:*
+*Technologies/Frameworks/Libraries:*
 
 #### Front End:
-- NextJS (Fullstack React Framework)
+- NextJS (Fullstack React Framework) with TypeScript
 - Next Auth (Authentication for NextJS)
 - TailwindCSS (Utility class based CSS framework)
 
@@ -27,9 +27,22 @@ Install and run database in docker (installation: https://www.docker.com/product
 
 Setup database:`prisma migrate dev`
 
+Seed database: `prisma db seed --preview-feature`
+
 Build project: `next build`
-Start project: `next start`
-Start project in dev mode: `next dev`
+
+Start project: `next start` or Start project in dev mode: `next dev`
+
+## Credentials
+
+To view the application from the admin or employee role you can use these credentials:
+
+Admin account :`admn.ppef@gmail.com` pw: `admin_1234`
+Employee account: `employee.ppef@gmail.com` pw: `employee_1234`
+
+## Assumptions
+
+
 
 
 

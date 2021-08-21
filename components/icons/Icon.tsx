@@ -7,6 +7,7 @@ import TrashIcon from './TrashIcon';
 import EmployeesIcon from './EmployeesIcon';
 import FeedbackAddIcon from './FeedbackAddIcon';
 import FeedbackIcon from './FeedbackIcon';
+import SaveIcon from './SaveIcon';
 
 const Icon = ({
     name,
@@ -27,6 +28,9 @@ const Icon = ({
             )}
             {name === 'Edit' && (
                 <EditIcon color={color} hoverTextColor={hoverTextColor} />
+            )}
+            {name === 'Save' && (
+                <SaveIcon color={color} hoverTextColor={hoverTextColor} />
             )}
             {name === 'Administration' && (
                 <AdminIcon color={color} hoverTextColor={hoverTextColor} />

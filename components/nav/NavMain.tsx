@@ -1,6 +1,6 @@
 import React from 'react';
 import LinkUI from '../ui/LinkUI';
-import { COLORS, IS_MANAGER, ROUTES } from '../../constants';
+import { COLORS, ROUTES } from '../../constants';
 
 const NavMain = () => {
     return (
@@ -15,18 +15,16 @@ const NavMain = () => {
                     title="Feedbacks"
                 />
             </li>
-            {IS_MANAGER && (
-                <li>
-                    <LinkUI
-                        href={ROUTES.EMPLOYEES}
-                        icon="Employees"
-                        styles="block p-[18px] w-full"
-                        iconColor={COLORS.GREY_MEDIUM}
-                        iconHoverColor="text-grey-dark"
-                        title="Employees"
-                    />
-                </li>
-            )}
+            <li>
+                <LinkUI
+                    href={ROUTES.EMPLOYEES}
+                    icon="Employees"
+                    styles="block p-[18px] w-full"
+                    iconColor={COLORS.GREY_MEDIUM}
+                    iconHoverColor="text-grey-dark"
+                    title="Employees"
+                />
+            </li>
         </ul>
     );
 };

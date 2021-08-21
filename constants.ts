@@ -1,5 +1,3 @@
-export const IS_MANAGER = true;
-
 export const ROUTES = {
     INDEX: '/',
     FEEDBACKS: '/feedbacks',
@@ -18,3 +16,8 @@ export const COLORS = {
     SUCCESS: '#10b455',
     ERROR: '#e75e4c',
 };
+
+export const USER_ROLE_OPTIONS = [
+    { value: 'manager', label: 'Manager' },
+    { value: 'employee', label: 'Employee' },
+];

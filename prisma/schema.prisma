@@ -11,8 +11,8 @@ generator client {
 }
 
 model Account {
-  id                 String    @id @default(cuid())
-  userId             String
+  id                 Int       @id @default(autoincrement())
+  userId             Int
   providerType       String
   providerId         String
   providerAccountId  String
@@ -27,8 +27,8 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  userId       String
+  id           Int      @id @default(autoincrement())
+  userId       Int
   expires      DateTime
   sessionToken String   @unique
   accessToken  String   @unique
@@ -38,7 +38,7 @@ model Session {
 }
 
 model User {
-  id            String     @id @default(cuid())
+  id            Int        @id @default(autoincrement())
   name          String?
   email         String?    @unique
   emailVerified DateTime?
@@ -48,6 +48,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Employee      Employee[]
+  Feedback      Feedback[]
 }
 
 model VerificationRequest {
@@ -62,14 +63,29 @@ model VerificationRequest {
 }
 
 model Employee {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String
-  role      String
-  roleLabel String
-  position  String
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int       @id @default(autoincrement())
+  email      String    @unique
+  name       String
+  role       String
+  roleLabel  String
+  position   String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  User       User?     @relation(fields: [userId], references: [id])
+  userId     Int?
+  Feedback   Feedback? @relation(fields: [feedbackId], references: [id])
+  feedbackId Int?
+}
+
+model Feedback {
+  id                  Int        @id @default(autoincrement())
+  employee            String
+  position            String
+  content             String
+  evaluatorEmployeeId Int
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  User                User?      @relation(fields: [userId], references: [id])
+  userId              Int?
+  Employee            Employee[]
 }

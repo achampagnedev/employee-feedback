@@ -1,10 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
-import LoginView from '../components/views/LoginView';
-import MainView from '../components/views/MainView';
-import Nav from '../components/nav/Nav';
 import { useSession } from 'next-auth/client';
 import LoginForm from '../components/forms/LoginForm';
+import Image from 'next/image';
 
 const Home: React.FC = () => {
     const [session, loading] = useSession();
@@ -25,7 +23,13 @@ const Home: React.FC = () => {
             <main className="flex flex-col-reverse md:flex-row min-h-screen justify-center w-full">
                 <div className="flex min-h-screen flex-col justify-center items-center md:w-full">
                     <div className="flex items-center mb-6">
-                        <img className="w-40" src="/paypay.png" alt="" />
+                        <Image
+                            className="w-40"
+                            src="/paypay.png"
+                            alt="PayPay Logo"
+                            width={146}
+                            height={50}
+                        />
                         <p className="ml-1 mt-2.5 text-grey-night mb-0 text-xs">
                             employee feedback
                         </p>
@@ -33,7 +37,6 @@ const Home: React.FC = () => {
                     <LoginForm />
                 </div>
             </main>
-            {/*{!loading ? !session ?  : <MainView /> : <></>}*/}
         </div>
     );
 };
