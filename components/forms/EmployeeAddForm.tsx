@@ -5,15 +5,19 @@ import ButtonUI from '../ui/ButtonUI';
 import Select from 'react-select';
 import { useEmployees } from '../../context/EmployeesContext';
 import { USER_ROLE_OPTIONS } from '../../constants';
+import LoaderUI from '../ui/LoaderUI';
 
 const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
+    const [loading, setLoading] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [position, setPosition] = useState('');
-    const [role, setRole] = useState({});
+    const [role, setRole] = useState(null);
     const { employees, setEmployees } = useEmployees();
 
     const addEmployee = async () => {
+        setLoading(true);
+
         await fetch('/api/employees', {
             method: 'POST',
             body: JSON.stringify({ name, email, position, role }),
@@ -25,9 +29,13 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
                 setName('');
                 setEmail('');
                 setPosition('');
-                setRole({});
+                setRole(null);
+                setLoading(false);
             })
-            .catch((e) => console.error(e));
+            .catch((e) => {
+                alert(e);
+                console.error(e);
+            });
     };
 
     return (
@@ -108,13 +116,21 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
                                 menuPortalTarget={document.querySelector(
                                     'body'
                                 )}
+                                value={role}
                                 options={USER_ROLE_OPTIONS}
                                 onChange={(e) => setRole(e)}
                                 className="text-sm flex-grow rounded-sm disabled:opacity-50 disabled:bg-off-white min-w-[200px] w-full"
                             />
                         </div>
-                        <div className="flex justify-end">
-                            <div>
+                        <div className="flex justify-end items-center mb-4">
+                            {loading && (
+                                <LoaderUI
+                                    centered={false}
+                                    width="8"
+                                    height="8"
+                                />
+                            )}
+                            <div className="pl-2">
                                 <ButtonUI text="Create New Employee" />
                             </div>
                         </div>

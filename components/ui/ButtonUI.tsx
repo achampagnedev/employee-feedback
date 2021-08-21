@@ -14,15 +14,15 @@ const ButtonUI = ({
         <>
             {href !== '' && (
                 <Link href={href}>
-                    <a className="inline-block text-white bg-primary hover:bg-primary-light transition-colors duration-200 py-2 px-4 mb-4">
+                    <a className="inline-block text-white bg-primary hover:bg-primary-light transition-colors duration-200 py-2 px-4">
                         {text}
                     </a>
                 </Link>
             )}
             {(onClickFn !== undefined || href === '') && (
                 <button
-                    className="inline-block text-white bg-primary hover:bg-primary-light transition-colors duration-200 py-2 px-4 mb-4 w-full"
-                    onClick={(e) => {
+                    className="inline-block text-white bg-primary hover:bg-primary-light transition-colors duration-200 py-2 px-4 w-full"
+                    onClick={() => {
                         if (onClickFn) onClickFn();
                     }}
                     type="submit"

@@ -43,7 +43,7 @@ const Index = ({
                             <NavBreadcrumbs title="Feedbacks" />
                             {isAdmin && (
                                 <>
-                                    <div className="flex justify-end">
+                                    <div className="flex justify-end mb-4">
                                         <div>
                                             <ButtonUI
                                                 text="+ Add Feedback"

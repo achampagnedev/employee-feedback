@@ -6,6 +6,7 @@ import Select from 'react-select';
 import { Employee } from '../../types';
 import { User } from 'next-auth';
 import { useFeedbacks } from '../../context/FeedbacksContext';
+import LoaderUI from '../ui/LoaderUI';
 
 const FeedbackCreateForm = ({
     creatable,
@@ -15,6 +16,7 @@ const FeedbackCreateForm = ({
     employees: Employee[];
     currentUser: User;
 }) => {
+    const [loading, setLoading] = useState(false);
     const [filteredEmployees, setFilteredEmployees] = useState(employees);
     const [newEmployee, setEmployee] = useState({ label: '', value: '' });
     const [newFeedback, setFeedback] = useState('');
@@ -22,12 +24,15 @@ const FeedbackCreateForm = ({
     const { feedbacks, setFeedbacks } = useFeedbacks();
 
     const createFeedback = async () => {
+        setLoading(true);
+
         await fetch('/api/feedbacks', {
             method: 'POST',
             body: JSON.stringify({ newEmployee, newFeedback, newEvaluator }),
         })
             .then(async (response: Response) => {
                 const result = await response.json().then((result) => result);
+                setLoading(false);
                 if (result.error) return alert(result.error);
                 setFeedbacks([result, ...feedbacks]);
             })
@@ -130,8 +135,15 @@ const FeedbackCreateForm = ({
                                     }}
                                 />
                             </div>
-                            <div className="flex justify-end">
-                                <div>
+                            <div className="flex justify-end items-center mb-4">
+                                {loading && (
+                                    <LoaderUI
+                                        centered={false}
+                                        width="8"
+                                        height="8"
+                                    />
+                                )}
+                                <div className="pl-2">
                                     <ButtonUI text="Create New Feedback" />
                                 </div>
                             </div>

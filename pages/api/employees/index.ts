@@ -15,7 +15,8 @@ async function createEmployee(req: NextApiRequest, res: NextApiResponse) {
     const existingEmployee = await prisma.employee.findUnique({
         where: { email: newEmployee.email },
     });
-    if (existingEmployee.id) {
+
+    if (existingEmployee !== null && existingEmployee.id) {
         return res.status(500).json({ error: 'This employee already exists.' });
     }
 

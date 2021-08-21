@@ -31,7 +31,7 @@ const Index = ({ initialEmployees, isAdmin, currentUser }) => {
                             <NavBreadcrumbs title="Employees" />
                             {isAdmin && (
                                 <>
-                                    <div className="flex justify-end">
+                                    <div className="flex justify-end mb-4">
                                         <div>
                                             <ButtonUI
                                                 text="+ Add Employee"

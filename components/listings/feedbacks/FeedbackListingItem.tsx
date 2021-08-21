@@ -13,7 +13,7 @@ const FeedbackListingItem = ({
 }) => {
     return (
         <CardUI>
-            <div className="w-full p-6 mb-4">
+            <div className="w-full p-6">
                 <div className="flex justify-between">
                     <div className="flex items-end mb-4">
                         <h2 className="inline-block pr-4 text-2xl leading-none">

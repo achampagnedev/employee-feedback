@@ -31,7 +31,7 @@ const FeedbackDetail = ({
     };
 
     return (
-        <div className="pr-4 pb-6 col-span-2">
+        <div className={`${isAdmin ? 'pb-6' : ''}`}>
             <div className="mt-1 mb-3 flex items-center">
                 <h3 className="text-lg text-grey-medium">
                     {isAdmin ? 'Feedback' : 'Your Feedback'}
@@ -79,7 +79,7 @@ const FeedbackDetail = ({
             )}
             {editable && (
                 <div>
-                    <div className="flex items-center mb-6">
+                    <div className="flex items-center">
                         <textarea
                             id="employee_feedback_edit"
                             name="employee_feedback_edit"
