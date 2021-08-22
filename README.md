@@ -26,7 +26,7 @@ Install all packages: `yarn install`
 
 In a **new tab**, Install and run database in docker (installation: https://www.docker.com/products/docker-desktop): `docker run -p 5432:5432 --env POSTGRES_PASSWORD=password --name paypal-employee-feedback postgres:13.3-alpine`
 
-Setup database:`yarn prisma migrate dev` press `y` to accept creation of new database `paypay-employee-feedback`
+Setup database: make sure the `.env` file is present and then `yarn prisma migrate dev`. press `y` to accept creation of new database `paypay-employee-feedback`
 
 Seed database: `yarn prisma db seed --preview-feature`
 
