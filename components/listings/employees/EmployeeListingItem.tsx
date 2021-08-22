@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Icon from '../../icons/Icon';
-import { COLORS, USER_ROLE_OPTIONS } from '../../../constants';
+import { USER_ROLE_OPTIONS } from '../../../constants';
 import { useEmployees } from '../../../context/EmployeesContext';
 import { User } from 'next-auth';
 import Select from 'react-select';
@@ -124,30 +124,13 @@ const EmployeeListingItem = ({
                         className="w-5 h-5 cursor-pointer"
                         onClick={!editable ? editEmployee : updateEmployee}
                     >
-                        {!editable && (
-                            <Icon
-                                name="Edit"
-                                color={COLORS.GREY_MEDIUM}
-                                hoverTextColor="text-grey-dark"
-                            />
-                        )}
-                        {editable && (
-                            <Icon
-                                name="Save"
-                                color={COLORS.GREY_MEDIUM}
-                                hoverTextColor="text-grey-dark"
-                            />
-                        )}
+                        <Icon name={!editable ? 'Edit' : 'Save'} />
                     </div>
                     <div
                         className="w-5 h-5 ml-3 cursor-pointer"
                         onClick={deleteEmployee}
                     >
-                        <Icon
-                            name="Trash"
-                            color={COLORS.GREY_MEDIUM}
-                            hoverTextColor="text-grey-dark"
-                        />
+                        <Icon name="Trash" />
                     </div>
                 </div>
             )}

@@ -18,7 +18,7 @@ const FormUI = ({
             <div className="px-6 py-4 flex justify-between items-center">
                 <h1 className="text-left text-lg text-bold">
                     {headerText}{' '}
-                    <span className="text-grey-medium text-xs">
+                    <span className="md:invisible text-grey-medium text-xs">
                         - {mobileNote}
                     </span>
                 </h1>
@@ -29,11 +29,7 @@ const FormUI = ({
                             closableOnClick();
                         }}
                     >
-                        <Icon
-                            name="Close"
-                            color={COLORS.GREY_MEDIUM}
-                            hoverTextColor="text-grey-dark"
-                        />
+                        <Icon name="Close" />
                     </div>
                 )}
             </div>

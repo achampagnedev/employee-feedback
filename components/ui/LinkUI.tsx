@@ -2,13 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Icon from '../icons/Icon';
+import { COLORS } from '../../constants';
 
 const LinkUI = ({
     href,
     text = '',
     icon = '',
-    iconColor = '',
-    iconHoverColor = '',
+    iconColor = COLORS.GREY_MEDIUM,
+    iconHoverColor = 'text-grey-dark',
     styles = '',
     hoverStyles = '',
     activeStyles = '',

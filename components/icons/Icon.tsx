@@ -11,8 +11,8 @@ import SaveIcon from './SaveIcon';
 
 const Icon = ({
     name,
-    color = COLORS.OFF_WHITE,
-    hoverTextColor = '',
+    color = COLORS.GREY_MEDIUM,
+    hoverTextColor = 'text-grey-dark',
 }: {
     name: string;
     color?: string;

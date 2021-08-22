@@ -40,20 +40,7 @@ const FeedbackDetail = ({
                     className="w-5 h-5 ml-3 cursor-pointer"
                     onClick={!editable ? editFeedback : updateFeedback}
                 >
-                    {!editable && (
-                        <Icon
-                            name="Edit"
-                            color={COLORS.GREY_MEDIUM}
-                            hoverTextColor="text-grey-dark"
-                        />
-                    )}
-                    {editable && (
-                        <Icon
-                            name="Save"
-                            color={COLORS.GREY_MEDIUM}
-                            hoverTextColor="text-grey-dark"
-                        />
-                    )}
+                    <Icon name={!editable ? 'Edit' : 'Save'} />
                 </div>
             </div>
             {!editable && (

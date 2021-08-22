@@ -10,8 +10,6 @@ const NavMain = () => {
                     href={ROUTES.FEEDBACKS}
                     icon="Feedbacks"
                     styles="block w-8 w-full flex"
-                    iconColor={COLORS.GREY_MEDIUM}
-                    iconHoverColor="text-grey-dark"
                     title="Feedbacks"
                 />
             </li>
@@ -20,8 +18,6 @@ const NavMain = () => {
                     href={ROUTES.EMPLOYEES}
                     icon="Employees"
                     styles="block w-8 w-full"
-                    iconColor={COLORS.GREY_MEDIUM}
-                    iconHoverColor="text-grey-dark"
                     title="Employees"
                 />
             </li>
