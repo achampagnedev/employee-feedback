@@ -18,7 +18,7 @@ const FeedbackEvaluator = ({ feedback }: { feedback: Feedback }) => {
 
     return (
         <div>
-            <h3 className="mt-1 mb-3 text-lg text-grey-medium">Evaluator</h3>
+            <h3 className="mt-1 mb-3 text-lg text-primary">Evaluator</h3>
             <p>
                 {name}
                 <span className="text-grey-medium text-sm"> - {position}</span>

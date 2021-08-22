@@ -33,7 +33,7 @@ const FeedbackDetail = ({
     return (
         <div className={`${isAdmin ? 'pb-6' : ''}`}>
             <div className="mt-1 mb-3 flex items-center">
-                <h3 className="text-lg text-grey-medium">
+                <h3 className="text-lg text-primary">
                     {isAdmin ? 'Feedback' : 'Your Feedback'}
                 </h3>
                 <div
