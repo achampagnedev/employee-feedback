@@ -74,31 +74,31 @@ const EmployeeListingItem = ({
     return (
         <div
             className={`grid flex items-center ${
-                isAdmin ? 'grid-cols-5' : 'grid-cols-4'
+                isAdmin ? 'grid-cols-12' : 'grid-cols-11'
             } py-2 mt-1 h-12 text-sm ${
                 currentUser.email === employee.email ? 'font-bold' : ''
             }`}
         >
             {!editable ? (
                 <>
-                    <p>{newName}</p>
-                    <p>{newEmployee.email}</p>
-                    <p>{newPosition}</p>
-                    <p>{newRoleLabel}</p>
+                    <p className="col-span-3">{newName}</p>
+                    <p className="col-span-3">{newEmployee.email}</p>
+                    <p className="col-span-3">{newPosition}</p>
+                    <p className="col-span-2">{newRoleLabel}</p>
                 </>
             ) : (
                 <>
                     <input
                         type="text"
                         value={newName}
-                        className="text-grey-night text-sm flex-grow rounded-[3px] p-2 mr-2 border disabled:opacity-50 disabled:bg-off-white"
+                        className="col-span-3 text-grey-night text-sm flex-grow rounded-[3px] p-2 mr-2 border disabled:opacity-50 disabled:bg-off-white"
                         onChange={(e) => setNewName(e.target.value)}
                     />
-                    <p>{newEmployee.email}</p>
+                    <p className="col-span-3">{newEmployee.email}</p>
                     <input
                         type="text"
                         value={newPosition}
-                        className="text-grey-night text-sm flex-grow rounded-[3px] p-2 mr-2 border disabled:opacity-50 disabled:bg-off-white"
+                        className="col-span-3 text-grey-night text-sm flex-grow rounded-[3px] p-2 mr-2 border disabled:opacity-50 disabled:bg-off-white"
                         onChange={(e) => setNewPosition(e.target.value)}
                     />
                     <Select
@@ -108,15 +108,13 @@ const EmployeeListingItem = ({
                             setNewRole(e.value);
                             setNewRoleLabel(e.label);
                         }}
-                        className="text-sm flex-grow rounded-sm disabled:opacity-50 mr-2 disabled:bg-off-white"
+                        className="col-span-2 text-sm flex-grow rounded-sm disabled:opacity-50 mr-2 disabled:bg-off-white"
                     />
                 </>
             )}
             {isAdmin && (
                 <div
                     className={`flex pl-2 ${
-                        isAdmin ? 'grid-cols-5' : 'grid-cols-4'
-                    } ${
                         currentUser.email === employee.email
                             ? 'pointer-events-none opacity-30'
                             : ''

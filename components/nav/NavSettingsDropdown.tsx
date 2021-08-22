@@ -7,7 +7,7 @@ const NavSettingsDropdown = () => {
     const [session] = useSession();
 
     return (
-        <div className="group absolute right-4 md:right-auto md:bottom-4 cursor-pointer text-grey-night">
+        <div className="group absolute right-0 top-[-4px] cursor-pointer text-grey-night">
             <div className="user-settings w-10 h-10">
                 {session && session.user.image !== '' && (
                     <Image
@@ -20,7 +20,7 @@ const NavSettingsDropdown = () => {
                 )}
                 {(!session || session.user.image === '') && <AdminIcon />}
             </div>
-            <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute bottom-[20px] left-[20px] bg-white drop-shadow-md">
+            <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute top-[20px] right-[20px] bg-white drop-shadow-md">
                 {session && session.user.email !== '' && (
                     <p className="px-8 py-2 font-bold">{session.user.email}</p>
                 )}

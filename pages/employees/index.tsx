@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import EmployeeAddForm from '../../components/forms/EmployeeAddForm';
+import EmployeeCreateForm from '../../components/forms/EmployeeCreateForm';
 import EmployeeListing from '../../components/listings/employees/EmployeeListing';
-import Head from 'next/head';
-import Nav from '../../components/nav/Nav';
-import NavBreadcrumbs from '../../components/nav/NavBreadcrumbs';
 import ButtonUI from '../../components/ui/ButtonUI';
 import prisma from '../../lib/prisma';
 import { GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/client';
 import { isAdminEmail } from '../../utils';
 import { ProvideEmployees } from '../../context/EmployeesContext';
+import PageUI from '../../components/ui/PageUI';
 
 const Index = ({ initialEmployees, isAdmin, currentUser }) => {
     const [showCreateForm, setShowCreateForm] = useState(false);
@@ -20,49 +18,34 @@ const Index = ({ initialEmployees, isAdmin, currentUser }) => {
 
     return (
         <ProvideEmployees>
-            <div className="w-full bg-off-white">
-                <Head>
-                    <title>Employees - PayPay Employee Feedback</title>
-                </Head>
-                <Nav />
-                <div className="w-full max-w-7xl min-h-screen pt-24 pl-4 md:pt-4 md:pl-24 pb-10">
-                    <main className="w-full">
-                        <div className="min-h-full">
-                            <NavBreadcrumbs title="Employees" />
-                            {isAdmin && (
-                                <>
-                                    <div className="flex justify-end mb-4">
-                                        <div>
-                                            <ButtonUI
-                                                text="+ Add Employee"
-                                                onClickFn={() =>
-                                                    setShowCreateForm(true)
-                                                }
-                                            />
-                                        </div>
-                                    </div>
-                                    {showCreateForm && (
-                                        <div className="pb-8">
-                                            <EmployeeAddForm
-                                                creatable={
-                                                    hideCreateFeedbackForm
-                                                }
-                                            />
-                                        </div>
-                                    )}
-                                </>
-                            )}
+            <PageUI title="Employees">
+                {isAdmin && (
+                    <>
+                        <div className="flex justify-end mb-4 mt-[-56px]">
                             <div>
-                                <EmployeeListing
-                                    initialEmployees={initialEmployees}
-                                    isAdmin={isAdmin}
-                                    currentUser={currentUser}
+                                <ButtonUI
+                                    text="+ Create Employee"
+                                    onClickFn={() => setShowCreateForm(true)}
                                 />
                             </div>
                         </div>
-                    </main>
+                        {showCreateForm && (
+                            <div className="pb-8">
+                                <EmployeeCreateForm
+                                    creatable={hideCreateFeedbackForm}
+                                />
+                            </div>
+                        )}
+                    </>
+                )}
+                <div>
+                    <EmployeeListing
+                        initialEmployees={initialEmployees}
+                        isAdmin={isAdmin}
+                        currentUser={currentUser}
+                    />
                 </div>
-            </div>
+            </PageUI>
         </ProvideEmployees>
     );
 };

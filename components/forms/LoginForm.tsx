@@ -8,7 +8,7 @@ const LoginForm = () => {
     return (
         <div className="bg-white divide-y drop-shadow-md">
             <FormUI headerText="Login">
-                <div className="flex flex-col items-center p-8 md:p-12">
+                <div className="flex flex-col items-center">
                     <div className="w-72">
                         <ButtonUI
                             onClickFn={() =>

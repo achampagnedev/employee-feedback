@@ -26,7 +26,7 @@ Install all packages: `yarn install`
 
 In a **new tab**, Install and run database in docker (installation: https://www.docker.com/products/docker-desktop): `docker run -p 5432:5432 --env POSTGRES_PASSWORD=password --name paypal-employee-feedback postgres:13.3-alpine`
 
-Setup database:`yarn prisma migrate dev`
+Setup database:`yarn prisma migrate dev` press `y` to accept creation of new database `paypay-employee-feedback`
 
 Seed database: `yarn prisma db seed --preview-feature`
 
@@ -45,6 +45,8 @@ To view the application from the admin or employee role you can use these creden
 Admin account :`admn.ppef@gmail.com` pw: `admin_1234`
 Employee account: `employee.ppef@gmail.com` pw: `employee_1234`
 
+You can logout by clicking hovering the profile image in the top right corner and click "logout"
+
 ## Assumptions
 
 I had a lot of fun doing this challenge. Here are the assumptions:
@@ -52,9 +54,9 @@ I had a lot of fun doing this challenge. Here are the assumptions:
 - The authentication system is only using Google as a provider therefore the supplied credentials have been provided to experience the app from both the Admin side and Employee side.
 - Some seeding is provided to have a quick overview of the app but adding new employees, feedback and preventing duplicates have been implemented.
 - Some validation on the Front End and Back End still needs to be implemented
-- Unit testing has not been done but can be implemented with tools like Cypress
-- Design was not provided so this is what I came up with.
+- Unit testing has not been done but can be implemented with tools like Cypress, Jest, etc.
 - Feedback are sorted by alphabetical order. When you add a new feedback it will appear at the top but will be sorted alphabetically on the next reload.
+- The Employee listing is not highly responsive on mobile. A better implementation could be added.
 - Employees are sorted by date of creation.
 - Employee emails can't be edited to prevent conflict with the test credentials.
 - My Database architecture/querying is not my strongest ability so there could be a lot of improvements done.

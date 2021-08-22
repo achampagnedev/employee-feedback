@@ -5,17 +5,19 @@ import Image from 'next/image';
 
 const Nav = () => {
     return (
-        <header className="flex flex-row md:flex-col items-center fixed md:min-h-screen min-h-0 md:w-16 md:left-0 left-auto md:top-0 w-full h-16 md:h-full px-4 md:py-4 py-0 md:px-0 bg-white drop-shadow-md z-10">
-            <div className="w-8">
-                <Image
-                    src="/paypay-sm.webp"
-                    alt="PayPay Logo Small"
-                    width={40}
-                    height={40}
-                />
+        <header className="flex items-center justify-center px-4 fixed h-16 w-full left-0 top-0 bg-white drop-shadow-md z-10">
+            <div className="flex w-full max-w-6xl relative">
+                <div className="w-8 flex items-center">
+                    <Image
+                        src="/paypay-sm.webp"
+                        alt="PayPay Logo Small"
+                        width={40}
+                        height={40}
+                    />
+                </div>
+                <NavMain />
+                <NavSettingsDropdown />
             </div>
-            <NavMain />
-            <NavSettingsDropdown />
         </header>
     );
 };

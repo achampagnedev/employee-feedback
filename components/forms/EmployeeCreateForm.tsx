@@ -7,7 +7,7 @@ import { useEmployees } from '../../context/EmployeesContext';
 import { USER_ROLE_OPTIONS } from '../../constants';
 import LoaderUI from '../ui/LoaderUI';
 
-const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
+const EmployeeCreateForm = ({ creatable }: { creatable: Function }) => {
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -26,6 +26,8 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
                 const result = await response.json().then((result) => result);
                 if (result.error) return alert(result.error);
                 setEmployees([...employees, result]);
+
+                // reset the form
                 setName('');
                 setEmail('');
                 setPosition('');
@@ -40,7 +42,7 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
 
     return (
         <CardUI>
-            <FormUI headerText="Add Employee" closableOnClick={creatable}>
+            <FormUI headerText="Create Employee" closableOnClick={creatable}>
                 <form
                     className="grid grid-cols-2 gap-8"
                     onSubmit={(e) => {
@@ -141,4 +143,4 @@ const EmployeeAddForm = ({ creatable }: { creatable: Function }) => {
     );
 };
 
-export default EmployeeAddForm;
+export default EmployeeCreateForm;

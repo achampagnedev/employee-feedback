@@ -1,27 +1,16 @@
 import Head from 'next/head';
 import React from 'react';
-import { useSession } from 'next-auth/client';
 import LoginForm from '../components/forms/LoginForm';
 import Image from 'next/image';
 
 const Home: React.FC = () => {
-    const [session, loading] = useSession();
-
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-off-white">
             <Head>
-                <title>
-                    {!session && !loading ? 'Login' : 'Feedbacks'} - PayPay
-                    Employee Feedback
-                </title>
-                <link rel="icon" href="/favicon.ico" />
-                <meta
-                    name="viewport"
-                    content="initial-scale=1.0, width=device-width"
-                />
+                <title>Login - PayPay Employee Feedback</title>
             </Head>
-            <main className="flex flex-col-reverse md:flex-row min-h-screen justify-center w-full">
-                <div className="flex min-h-screen flex-col justify-center items-center md:w-full">
+            <main className="flex flex-row min-h-screen justify-center w-full">
+                <div className="flex min-h-screen flex-col justify-center items-center w-full">
                     <div className="flex items-center mb-6">
                         <Image
                             className="w-40"

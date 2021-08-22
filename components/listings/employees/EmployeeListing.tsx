@@ -23,28 +23,35 @@ const EmployeeListing = ({ initialEmployees, isAdmin, currentUser }) => {
             )}
             {employees.length > 0 && !loading && (
                 <CardUI>
-                    <FormUI headerText="Employees">
-                        <div className="w-full divide-y">
-                            <div
-                                className={`grid ${
-                                    isAdmin ? 'grid-cols-5' : 'grid-cols-4'
-                                } py-2 mt-1 text-grey-medium font-bold`}
-                            >
-                                <p>Name</p>
-                                <p>Email</p>
-                                <p>Position</p>
-                                <p>Role</p>
-                                {isAdmin && <p>Actions</p>}
-                            </div>
-                            <div className="divide-y">
-                                {employees.map((employee) => (
-                                    <EmployeeListingItem
-                                        employee={employee}
-                                        isAdmin={isAdmin}
-                                        currentUser={currentUser}
-                                        key={employee.id}
-                                    />
-                                ))}
+                    <FormUI
+                        headerText="Employees"
+                        mobileNote="(scroll horizontally for content)"
+                    >
+                        <div className="overflow-x-scroll">
+                            <div className="w-full divide-y w-[768px] md:w-auto">
+                                <div
+                                    className={`grid ${
+                                        isAdmin
+                                            ? 'grid-cols-12'
+                                            : 'grid-cols-11'
+                                    } py-2 mt-1 text-grey-medium font-bold`}
+                                >
+                                    <p className="col-span-3">Name</p>
+                                    <p className="col-span-3">Email</p>
+                                    <p className="col-span-3">Position</p>
+                                    <p className="col-span-2">Role</p>
+                                    {isAdmin && <p>Actions</p>}
+                                </div>
+                                <div className="divide-y">
+                                    {employees.map((employee) => (
+                                        <EmployeeListingItem
+                                            employee={employee}
+                                            isAdmin={isAdmin}
+                                            currentUser={currentUser}
+                                            key={employee.id}
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </FormUI>
@@ -53,7 +60,7 @@ const EmployeeListing = ({ initialEmployees, isAdmin, currentUser }) => {
             {employees.length === 0 && !loading && (
                 <p className="flex justify-center text-2xl text-grey-medium pt-8">
                     {isAdmin
-                        ? 'There are no employees yet. Click "Add Employee" to create your first employee.'
+                        ? 'There are no employees yet. Click "Create Employee" to create your first employee.'
                         : 'There are no employees yet.'}
                 </p>
             )}

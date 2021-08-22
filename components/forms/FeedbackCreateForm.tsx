@@ -18,9 +18,9 @@ const FeedbackCreateForm = ({
 }) => {
     const [loading, setLoading] = useState(false);
     const [filteredEmployees, setFilteredEmployees] = useState(employees);
-    const [newEmployee, setEmployee] = useState({ label: '', value: '' });
+    const [newEmployee, setNewEmployee] = useState(null);
     const [newFeedback, setFeedback] = useState('');
-    const [newEvaluator, setEvaluator] = useState({} || []);
+    const [newEvaluator, setNewEvaluator] = useState(null);
     const { feedbacks, setFeedbacks } = useFeedbacks();
 
     const createFeedback = async () => {
@@ -35,6 +35,8 @@ const FeedbackCreateForm = ({
                 setLoading(false);
                 if (result.error) return alert(result.error);
                 setFeedbacks([result, ...feedbacks]);
+                setNewEmployee(null);
+                setNewEvaluator(null);
             })
             .catch((e) => {
                 console.error(e);
@@ -45,21 +47,21 @@ const FeedbackCreateForm = ({
         <CardUI>
             <div className="mb-4 z-10">
                 <FormUI
-                    headerText="Add New Feedback"
+                    headerText="Create New Feedback"
                     closableOnClick={creatable}
                 >
                     <form
-                        className="grid grid-cols-2 gap-8"
+                        className="grid md:grid-cols-2 md:gap-8"
                         onSubmit={(e) => {
                             e.preventDefault();
                             createFeedback().then((r) => r);
                         }}
                     >
                         <div>
-                            <div className="flex items-center mb-6">
+                            <div className="flex flex-col md:flex-row md:items-center mb-6">
                                 <label
                                     htmlFor="employee_name"
-                                    className="text-sm min-w-[100px] pr-4"
+                                    className="text-sm min-w-[100px] pb-2 md:pb-0 md:pr-4"
                                 >
                                     Employee*
                                 </label>
@@ -77,6 +79,7 @@ const FeedbackCreateForm = ({
                                     required
                                     className="text-sm flex-grow rounded-sm disabled:opacity-50 disabled:bg-off-white min-w-[200px] w-full"
                                     placeholder="Select Employee"
+                                    value={newEmployee}
                                     onChange={(e) => {
                                         setFilteredEmployees(
                                             employees.filter(
@@ -84,14 +87,14 @@ const FeedbackCreateForm = ({
                                                     employee.id !== e.value
                                             )
                                         );
-                                        setEmployee(e);
+                                        setNewEmployee(e);
                                     }}
                                 />
                             </div>
-                            <div className="flex items-center mb-6">
+                            <div className="flex flex-col md:flex-row md:items-center mb-6">
                                 <label
                                     htmlFor="employee_feedback_new"
-                                    className="text-sm  min-w-[100px] pr-4"
+                                    className="text-sm  min-w-[100px] pb-2 md:pb-0 md:pr-4"
                                 >
                                     Feedback
                                 </label>
@@ -99,7 +102,7 @@ const FeedbackCreateForm = ({
                                     id="employee_feedback_new"
                                     name="employee_feedback_new"
                                     placeholder="Add your feedback instructions or leave this for the employee to fill."
-                                    className="text-grey-night text-sm flex-grow rounded-[3px] p-2 border disabled:opacity-50 disabled:bg-off-white"
+                                    className="w-full md:w-auto text-grey-night text-sm flex-grow rounded-[3px] p-2 border disabled:opacity-50 disabled:bg-off-white"
                                     onChange={(e) =>
                                         setFeedback(e.target.value)
                                     }
@@ -107,10 +110,10 @@ const FeedbackCreateForm = ({
                             </div>
                         </div>
                         <div>
-                            <div className="flex items-center mb-6">
+                            <div className="flex flex-col md:flex-row md:items-center mb-6">
                                 <label
                                     htmlFor="employee_role"
-                                    className="text-sm min-w-[100px] pr-4"
+                                    className="text-sm min-w-[100px] pb-2 md:pb-0 md:pr-4"
                                 >
                                     Evaluator*
                                 </label>
@@ -130,12 +133,13 @@ const FeedbackCreateForm = ({
                                     )}
                                     className="text-sm flex-grow rounded-sm disabled:opacity-50 disabled:bg-off-white min-w-[200px] w-full"
                                     placeholder="Select Evaluator"
+                                    value={newEvaluator}
                                     onChange={(e) => {
-                                        setEvaluator(e);
+                                        setNewEvaluator(e);
                                     }}
                                 />
                             </div>
-                            <div className="flex justify-end items-center mb-4">
+                            <div className="flex justify-end items-center pt-4 md:pt-0 mb-4">
                                 {loading && (
                                     <LoaderUI
                                         centered={false}
@@ -143,7 +147,7 @@ const FeedbackCreateForm = ({
                                         height="8"
                                     />
                                 )}
-                                <div className="pl-2">
+                                <div className="md:pl-2 w-full md:w-auto">
                                     <ButtonUI text="Create New Feedback" />
                                 </div>
                             </div>
