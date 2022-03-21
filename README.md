@@ -1,32 +1,35 @@
-# PayPay Employee Feedback
+# Employee Feedback
 
-This app is an attempt to fulfill the requirements for the code challenge for the role of Front-End Engineer at PayPay.
+This is a small NextJS app that allows an Admin to add employees and assign employees to give feedback on other employees
 
 ## Technologies/Frameworks/Libraries:
 
 #### Front End:
-- NextJS (Fullstack React Framework) with TypeScript
-- Next Auth (Authentication for NextJS)
-- TailwindCSS (Utility class based CSS framework)
-- Sharp (Image Optimization tool recommended for NextJS)
+
+-   NextJS (Fullstack React Framework) with TypeScript
+-   Next Auth (Authentication for NextJS)
+-   TailwindCSS (Utility class based CSS framework)
+-   Sharp (Image Optimization tool recommended for NextJS)
 
 #### Back End:
-- NextJS (Fullstack React Framework)
-- Prisma (ORM compatible with PostgreSQL)
-- PostgreSQL Database
+
+-   NextJS (Fullstack React Framework)
+-   Prisma (ORM compatible with PostgreSQL)
+-   PostgreSQL Database
 
 #### Tools:
-- Docker (container for the database)
-- Prettier (code formatter)
-- TypeScript (Javascript superset)
+
+-   Docker (container for the database)
+-   Prettier (code formatter)
+-   TypeScript (Javascript superset)
 
 ## Setup
 
 Install all packages: `yarn install`
 
-In a **new tab**, Install and run database in docker (installation: https://www.docker.com/products/docker-desktop): `docker run -p 5432:5432 --env POSTGRES_PASSWORD=password --name paypal-employee-feedback postgres:13.3-alpine`
+In a **new tab**, Install and run database in docker (installation: https://www.docker.com/products/docker-desktop): `docker run -p 5432:5432 --env POSTGRES_PASSWORD=password --name employee-feedback postgres:13.3-alpine`
 
-Setup database: make sure the `.env` file is present and then `yarn prisma migrate dev`. press `y` to accept creation of new database `paypay-employee-feedback`
+Setup database: make sure the `.env` file is present and then `yarn prisma migrate dev`. press `y` to accept creation of new database `employee-feedback`
 
 Seed database: `yarn prisma db seed --preview-feature`
 
@@ -49,23 +52,15 @@ You can logout by clicking hovering the profile image in the top right corner an
 
 ## Assumptions
 
-I had a lot of fun doing this challenge. Here are the assumptions:
+I had a lot of fun doing this small app. Here are the assumptions:
 
-- The authentication system is only using Google as a provider therefore the supplied credentials have been provided to experience the app from both the Admin side and Employee side.
-- Some seeding is provided to have a quick overview of the app but adding new employees, feedback and preventing duplicates have been implemented.
-- Some validation on the Front End and Back End still needs to be implemented
-- Unit testing has not been done but can be implemented with tools like Cypress, Jest, etc.
-- Feedback are sorted by alphabetical order. When you add a new feedback it will appear at the top but will be sorted alphabetically on the next reload.
-- The Employee listing is not highly responsive on mobile. A better implementation could be added.
-- Employees are sorted by date of creation.
-- Employee emails can't be edited to prevent conflict with the test credentials.
-- My Database architecture/querying is not my strongest ability so there could be a lot of improvements done.
-- Some Front End modules could be refactored/simplified further (e.g: inputs, select, containers.)
-
-
-
-
-
-
-
-
+-   The authentication system is only using Google as a provider therefore the supplied credentials have been provided to experience the app from both the Admin side and Employee side.
+-   Some seeding is provided to have a quick overview of the app but adding new employees, feedback and preventing duplicates have been implemented.
+-   Some validation on the Front End and Back End still needs to be implemented
+-   Unit testing has not been done but can be implemented with tools like Cypress, Jest, etc.
+-   Feedback are sorted by alphabetical order. When you add a new feedback it will appear at the top but will be sorted alphabetically on the next reload.
+-   The Employee listing is not highly responsive on mobile. A better implementation could be added.
+-   Employees are sorted by date of creation.
+-   Employee emails can't be edited to prevent conflict with the test credentials.
+-   My Database architecture/querying is not my strongest ability so there could be a lot of improvements done.
+-   Some Front End modules could be refactored/simplified further (e.g: inputs, select, containers.)
