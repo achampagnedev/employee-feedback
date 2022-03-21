@@ -1,12 +1,14 @@
 import React from 'react';
 import { COLORS } from '../../constants';
 
-const EditIcon = ({
-    color = COLORS.OFF_WHITE,
-    hoverTextColor = '',
-}: {
+interface Props {
     color?: string;
     hoverTextColor?: string;
+}
+
+const EditIcon: React.FC<Props> = ({
+    color = COLORS.OFF_WHITE,
+    hoverTextColor = '',
 }) => {
     return (
         <svg

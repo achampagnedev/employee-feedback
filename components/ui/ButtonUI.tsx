@@ -1,33 +1,36 @@
 import React from 'react';
 import Link from 'next/link';
 
-const ButtonUI = ({
-    onClickFn = undefined,
-    href = '',
-    text,
-}: {
+const baseStyles =
+    'inline-block text-white bg-primary hover:bg-primary-light transition-colors duration-200 py-2 px-4 inline-block text-white bg-primary hover:bg-primary-light transition-colors duration-200 py-2 px-4';
+
+interface Props {
     onClickFn?: Function;
     href?: string;
-    text: string;
+    children: JSX.Element | string;
+}
+
+const ButtonUI: React.FC<Props> = ({
+    onClickFn = undefined,
+    href = '',
+    children,
 }) => {
     return (
         <>
             {href !== '' && (
                 <Link href={href}>
-                    <a className="inline-block text-white bg-primary hover:bg-primary-light transition-colors duration-200 py-2 px-4">
-                        {text}
-                    </a>
+                    <a className={baseStyles}>{children}</a>
                 </Link>
             )}
             {(onClickFn !== undefined || href === '') && (
                 <button
-                    className="inline-block text-white bg-primary hover:bg-primary-light transition-colors duration-200 py-2 px-4 w-full"
+                    className={`${baseStyles} w-full`}
                     onClick={() => {
                         if (onClickFn) onClickFn();
                     }}
                     type="submit"
                 >
-                    {text}
+                    {children}
                 </button>
             )}
         </>

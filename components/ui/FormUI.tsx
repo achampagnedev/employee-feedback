@@ -1,17 +1,18 @@
 import React from 'react';
 import Icon from '../icons/Icon';
-import { COLORS } from '../../constants';
 
-const FormUI = ({
+interface Props {
+    children: JSX.Element;
+    headerText: string;
+    mobileNote?: string;
+    closableOnClick?: Function;
+}
+
+const FormUI: React.FC<Props> = ({
     children,
     headerText,
     mobileNote,
     closableOnClick = undefined,
-}: {
-    children: React.ClassicElement<any> | React.FC;
-    headerText: string;
-    mobileNote?: string;
-    closableOnClick?: Function;
 }) => {
     return (
         <div className="divide-y">

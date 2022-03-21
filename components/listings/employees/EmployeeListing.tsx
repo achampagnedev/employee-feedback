@@ -5,8 +5,20 @@ import EmployeeListingItem from './EmployeeListingItem';
 import { useEmployees } from '../../../context/EmployeesContext';
 import { useSession } from 'next-auth/client';
 import LoaderUI from '../../ui/LoaderUI';
+import { Employee } from '../../../types';
+import { User } from 'next-auth';
 
-const EmployeeListing = ({ initialEmployees, isAdmin, currentUser }) => {
+interface Props {
+    initialEmployees: Employee[];
+    isAdmin: boolean;
+    currentUser: User;
+}
+
+const EmployeeListing: React.FC<Props> = ({
+    initialEmployees,
+    isAdmin,
+    currentUser,
+}) => {
     const [session, loading] = useSession();
     const { employees, setEmployees } = useEmployees();
 
@@ -28,7 +40,7 @@ const EmployeeListing = ({ initialEmployees, isAdmin, currentUser }) => {
                         mobileNote="(scroll horizontally for content)"
                     >
                         <div className="overflow-x-scroll">
-                            <div className="w-full divide-y w-[768px] md:w-auto">
+                            <div className="divide-y w-[768px] md:w-auto">
                                 <div
                                     className={`grid ${
                                         isAdmin

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Employee } from '../../types';
 import EmployeeCreateForm from '../../components/forms/EmployeeCreateForm';
 import EmployeeListing from '../../components/listings/employees/EmployeeListing';
 import ButtonUI from '../../components/ui/ButtonUI';
@@ -8,8 +9,15 @@ import { getSession } from 'next-auth/client';
 import { isAdminEmail } from '../../utils';
 import { ProvideEmployees } from '../../context/EmployeesContext';
 import PageUI from '../../components/ui/PageUI';
+import { User } from 'next-auth';
 
-const Index = ({ initialEmployees, isAdmin, currentUser }) => {
+interface Props {
+    currentUser: User;
+    isAdmin: boolean;
+    initialEmployees: Employee[];
+}
+
+const Index: React.FC<Props> = ({ initialEmployees, isAdmin, currentUser }) => {
     const [showCreateForm, setShowCreateForm] = useState(false);
 
     const hideCreateFeedbackForm = () => {
@@ -24,9 +32,10 @@ const Index = ({ initialEmployees, isAdmin, currentUser }) => {
                         <div className="flex justify-end mb-4 mt-[-56px]">
                             <div>
                                 <ButtonUI
-                                    text="+ Create Employee"
                                     onClickFn={() => setShowCreateForm(true)}
-                                />
+                                >
+                                    + Create Employee
+                                </ButtonUI>
                             </div>
                         </div>
                         {showCreateForm && (

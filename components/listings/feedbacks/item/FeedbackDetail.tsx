@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import Icon from '../../../icons/Icon';
-import { COLORS } from '../../../../constants';
 import { Feedback } from '../../../../types';
 
-const FeedbackDetail = ({
-    feedback,
-    isAdmin,
-}: {
+interface Props {
     feedback: Feedback;
     isAdmin: boolean;
-}) => {
+}
+
+const FeedbackDetail: React.FC<Props> = ({ feedback, isAdmin }) => {
     const [newFeedback, setNewFeedback] = useState(feedback.content);
     const [editable, setEdit] = useState(false);
 

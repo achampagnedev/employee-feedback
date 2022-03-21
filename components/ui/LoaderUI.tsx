@@ -1,14 +1,16 @@
 import React from 'react';
 import { COLORS } from '../../constants';
 
-const LoaderUI = ({
-    height = '10',
-    width = '10',
-    centered = true,
-}: {
+interface Props {
     height?: string;
     width?: string;
     centered?: boolean;
+}
+
+const LoaderUI: React.FC<Props> = ({
+    height = '10',
+    width = '10',
+    centered = true,
 }) => {
     return (
         <div className={`${centered ? 'flex justify-center' : ''}`}>

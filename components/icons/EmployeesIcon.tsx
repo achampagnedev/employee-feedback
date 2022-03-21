@@ -1,12 +1,14 @@
 import React from 'react';
 import { COLORS } from '../../constants';
 
-const EmployeesIcon = ({
-    color = COLORS.OFF_WHITE,
-    hoverTextColor = '',
-}: {
+interface Props {
     color?: string;
     hoverTextColor?: string;
+}
+
+const EmployeesIcon: React.FC<Props> = ({
+    color = COLORS.OFF_WHITE,
+    hoverTextColor = '',
 }) => {
     return (
         <svg

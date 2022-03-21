@@ -7,21 +7,16 @@ import { getSession } from 'next-auth/client';
 import { GetServerSidePropsContext } from 'next';
 import { isAdminEmail } from '../../utils';
 import { Employee, Feedback } from '../../types';
-import { User } from 'next-auth';
 import { ProvideFeedbacks } from '../../context/FeedbacksContext';
 import PageUI from '../../components/ui/PageUI';
 
-const Index = ({
-    currentUser,
-    isAdmin,
-    employees,
-    initialFeedbacks,
-}: {
-    currentUser: User;
+interface Props {
     isAdmin: boolean;
     employees: Employee[];
     initialFeedbacks: Feedback[];
-}) => {
+}
+
+const Index: React.FC<Props> = ({ isAdmin, employees, initialFeedbacks }) => {
     const [showCreateForm, setShowCreateForm] = useState(false);
 
     const hideCreateFeedbackForm = () => {
@@ -36,16 +31,16 @@ const Index = ({
                         <div className="flex justify-end mb-4 mt-[-56px]">
                             <div>
                                 <ButtonUI
-                                    text="+ Create Freedback"
                                     onClickFn={() => setShowCreateForm(true)}
-                                />
+                                >
+                                    + Create Feedback
+                                </ButtonUI>
                             </div>
                         </div>
                         {showCreateForm && (
                             <FeedbackCreateForm
                                 creatable={hideCreateFeedbackForm}
                                 employees={employees}
-                                currentUser={currentUser}
                             />
                         )}
                     </>

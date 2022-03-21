@@ -7,7 +7,11 @@ import { useEmployees } from '../../context/EmployeesContext';
 import { USER_ROLE_OPTIONS } from '../../constants';
 import LoaderUI from '../ui/LoaderUI';
 
-const EmployeeCreateForm = ({ creatable }: { creatable: Function }) => {
+interface Props {
+    creatable: Function;
+}
+
+const EmployeeCreateForm: React.FC<Props> = ({ creatable }) => {
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -133,7 +137,7 @@ const EmployeeCreateForm = ({ creatable }: { creatable: Function }) => {
                                 />
                             )}
                             <div className="pl-2">
-                                <ButtonUI text="Create New Employee" />
+                                <ButtonUI>Create New Employee</ButtonUI>
                             </div>
                         </div>
                     </div>

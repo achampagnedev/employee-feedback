@@ -3,7 +3,7 @@ import { signOut, useSession } from 'next-auth/client';
 import AdminIcon from '../icons/AdminIcon';
 import Image from 'next/image';
 
-const NavSettingsDropdown = () => {
+const NavSettingsDropdown: React.FC = () => {
     const [session] = useSession();
 
     return (

@@ -3,23 +3,19 @@ import Icon from '../../icons/Icon';
 import { USER_ROLE_OPTIONS } from '../../../constants';
 import { useEmployees } from '../../../context/EmployeesContext';
 import { User } from 'next-auth';
+import { Employee } from '../../../types';
 import Select from 'react-select';
 
-const EmployeeListingItem = ({
+interface Props {
+    employee: Employee;
+    isAdmin: boolean;
+    currentUser: User;
+}
+
+const EmployeeListingItem: React.FC<Props> = ({
     employee,
     isAdmin,
     currentUser,
-}: {
-    employee: {
-        id: string;
-        name: string;
-        email: string;
-        role: string;
-        roleLabel: string;
-        position: string;
-    };
-    isAdmin: boolean;
-    currentUser: User;
 }) => {
     const [editable, setEdit] = useState(false);
     const [newName, setNewName] = useState(employee.name);
@@ -73,7 +69,7 @@ const EmployeeListingItem = ({
 
     return (
         <div
-            className={`grid flex items-center ${
+            className={`flex items-center ${
                 isAdmin ? 'grid-cols-12' : 'grid-cols-11'
             } py-2 mt-1 h-12 text-sm ${
                 currentUser.email === employee.email ? 'font-bold' : ''

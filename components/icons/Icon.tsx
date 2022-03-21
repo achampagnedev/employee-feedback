@@ -9,14 +9,16 @@ import FeedbackAddIcon from './FeedbackAddIcon';
 import FeedbackIcon from './FeedbackIcon';
 import SaveIcon from './SaveIcon';
 
-const Icon = ({
-    name,
-    color = COLORS.GREY_MEDIUM,
-    hoverTextColor = 'text-grey-dark',
-}: {
+interface Props {
     name: string;
     color?: string;
     hoverTextColor?: string;
+}
+
+const Icon: React.FC<Props> = ({
+    name,
+    color = COLORS.GREY_MEDIUM,
+    hoverTextColor = 'text-grey-dark',
 }) => {
     return (
         <>

@@ -4,6 +4,7 @@ export type Employee = {
     email: string;
     role: string;
     position: string;
+    roleLabel: string;
 };
 
 export type Feedback = {

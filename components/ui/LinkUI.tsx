@@ -4,17 +4,7 @@ import { useRouter } from 'next/router';
 import Icon from '../icons/Icon';
 import { COLORS } from '../../constants';
 
-const LinkUI = ({
-    href,
-    text = '',
-    icon = '',
-    iconColor = COLORS.GREY_MEDIUM,
-    iconHoverColor = 'text-grey-dark',
-    styles = '',
-    hoverStyles = '',
-    activeStyles = '',
-    title = '',
-}: {
+interface Props {
     href: string;
     text?: string;
     icon?: string;
@@ -24,6 +14,18 @@ const LinkUI = ({
     hoverStyles?: string;
     activeStyles?: string;
     title?: string;
+}
+
+const LinkUI: React.FC<Props> = ({
+    href,
+    text = '',
+    icon = '',
+    iconColor = COLORS.GREY_MEDIUM,
+    iconHoverColor = 'text-grey-dark',
+    styles = '',
+    hoverStyles = '',
+    activeStyles = '',
+    title = '',
 }) => {
     const router = useRouter();
 

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Feedback } from '../../../../types';
 
-const FeedbackEvaluator = ({ feedback }: { feedback: Feedback }) => {
+interface Props {
+    feedback: Feedback;
+}
+
+const FeedbackEvaluator: React.FC<Props> = ({ feedback }) => {
     const [name, setName] = useState(null);
     const [position, setPosition] = useState(null);
 

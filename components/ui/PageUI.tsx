@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Head from 'next/head';
 import Nav from '../nav/Nav';
 import NavBreadcrumbs from '../nav/NavBreadcrumbs';
 
-const PageUI = ({ title, children }) => {
+interface Props {
+    title: string;
+    children: JSX.Element | JSX.Element[];
+}
+
+const PageUI: React.FC<Props> = ({ title, children, ...props }) => {
     return (
         <div className="w-full bg-off-white">
             <Head>

@@ -4,13 +4,12 @@ import FeedbackDetail from './item/FeedbackDetail';
 import FeedbackEvaluator from './item/FeedbackEvaluator';
 import { Feedback } from '../../../types';
 
-const FeedbackListingItem = ({
-    isAdmin,
-    feedback,
-}: {
+interface Props {
     isAdmin: boolean;
     feedback: Feedback;
-}) => {
+}
+
+const FeedbackListingItem: React.FC<Props> = ({ isAdmin, feedback }) => {
     return (
         <CardUI>
             <div className="w-full p-6">

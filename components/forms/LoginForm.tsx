@@ -4,7 +4,7 @@ import ButtonUI from '../ui/ButtonUI';
 import FormUI from '../ui/FormUI';
 import { ROUTES } from '../../constants';
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
     return (
         <div className="bg-white divide-y drop-shadow-md">
             <FormUI headerText="Login">
@@ -16,8 +16,9 @@ const LoginForm = () => {
                                     callbackUrl: `${window.location.origin}${ROUTES.FEEDBACKS}`,
                                 })
                             }
-                            text="Sign In with Google"
-                        />
+                        >
+                            Sign In with Google
+                        </ButtonUI>
                     </div>
                 </div>
             </FormUI>

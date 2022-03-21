@@ -5,13 +5,12 @@ import { useFeedbacks } from '../../../context/FeedbacksContext';
 import LoaderUI from '../../ui/LoaderUI';
 import { useSession } from 'next-auth/client';
 
-const FeedbackListing = ({
-    isAdmin,
-    initialFeedbacks,
-}: {
+interface Props {
     isAdmin: boolean;
     initialFeedbacks: Feedback[];
-}) => {
+}
+
+const FeedbackListing: React.FC<Props> = ({ isAdmin, initialFeedbacks }) => {
     const [session, loading] = useSession();
     const { feedbacks, setFeedbacks } = useFeedbacks();
 

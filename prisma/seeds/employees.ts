@@ -1,13 +1,13 @@
 export const employees = [
     {
-        name: 'Admin PPEF',
+        name: 'Admin EF',
         email: 'admn.ppef@gmail.com',
         position: 'CEO',
         role: 'owner',
         roleLabel: 'Owner',
     },
     {
-        name: 'Employee PPEF',
+        name: 'Employee EF',
         email: 'employee.ppef@gmail.com',
         position: 'Front End Developer',
         role: 'employee',

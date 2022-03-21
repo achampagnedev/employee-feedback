@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Employee } from '../types';
 
 const EmployeesContext = React.createContext(null);
 
@@ -16,7 +17,7 @@ export function useEmployees() {
 }
 
 function useProvideEmployees() {
-    const [employees, setEmployees] = useState([]);
+    const [employees, setEmployees] = useState<Employee[]>([]);
 
     return { employees, setEmployees };
 }

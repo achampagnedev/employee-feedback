@@ -4,18 +4,15 @@ import ButtonUI from '../ui/ButtonUI';
 import FormUI from '../ui/FormUI';
 import Select from 'react-select';
 import { Employee } from '../../types';
-import { User } from 'next-auth';
 import { useFeedbacks } from '../../context/FeedbacksContext';
 import LoaderUI from '../ui/LoaderUI';
 
-const FeedbackCreateForm = ({
-    creatable,
-    employees,
-}: {
+interface Props {
     creatable: Function;
     employees: Employee[];
-    currentUser: User;
-}) => {
+}
+
+const FeedbackCreateForm: React.FC<Props> = ({ creatable, employees }) => {
     const [loading, setLoading] = useState(false);
     const [filteredEmployees, setFilteredEmployees] = useState(employees);
     const [newEmployee, setNewEmployee] = useState(null);
@@ -94,7 +91,7 @@ const FeedbackCreateForm = ({
                             <div className="flex flex-col md:flex-row md:items-center mb-6">
                                 <label
                                     htmlFor="employee_feedback_new"
-                                    className="text-sm  min-w-[100px] pb-2 md:pb-0 md:pr-4"
+                                    className="text-sm min-w-[100px] pb-2 md:pb-0 md:pr-4"
                                 >
                                     Feedback
                                 </label>
@@ -148,7 +145,7 @@ const FeedbackCreateForm = ({
                                     />
                                 )}
                                 <div className="md:pl-2 w-full md:w-auto">
-                                    <ButtonUI text="Create New Feedback" />
+                                    <ButtonUI>Create New Feedback</ButtonUI>
                                 </div>
                             </div>
                         </div>
